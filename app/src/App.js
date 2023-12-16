@@ -2,6 +2,7 @@ import './App.css';
 import React, { useState, useEffect } from "react";
 import api from "./api.js";
 import Post from './Post.js';
+import Navbar from './Navbar.js';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
 
   return (
     <div className="App">
+      <Navbar />
       {posts.map((post, index) => (
         <Post
           title={post.title}
