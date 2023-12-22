@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 function Navbar() {
     return (
         <nav className="nav">
-            <a href="/posts" className="blog-title">Martin's blog</a>
+            <Link to="/" className="blog-title">Martin's blog</Link>
             <ul>
                 <li>
-                    <Link to="/posts" >Posts</Link>
+                    <Link to="/create_post" >New post</Link>
                 </li>
                 <li>
                     <Link to="/about" >About</Link>
