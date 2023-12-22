@@ -1,22 +1,34 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 import json
+from datetime import date
 from typing import Dict, List
+from constants import ORIGINS, DATA_PATH, Post
+
 
 app = FastAPI()
 
-origins = ["http://localhost:3000"]  # Update with your React app's URL
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-data = json.load(open("./data/posts.json", "r"))
+data = json.load(open(DATA_PATH, "r"))
 
 
 @app.get("/")
 def get_posts() -> Dict[str, List]:
     return {"posts": data}
+
+
+@app.post("/create_post")
+def new_post(post: Post) -> bool:
+    data.append(
+        {"title": post.title, "pubDate": str(date.today()), "content": post.content}
+    )
+    with open(DATA_PATH, "w") as f:
+        json.dump(data, f)
+    return True
