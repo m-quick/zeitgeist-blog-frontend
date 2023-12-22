@@ -1,21 +1,46 @@
 import './App.css';
 import Navbar from './components/Navbar.js';
-import Home from './pages/Home.js'
 import CreatePost from './pages/CreatePost.js'
+import PostPage from './pages/PostPage.js'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import api from "./api.js";
+import LandingPage from "./pages/LandingPage.js"
+import About from "./pages/About.js"
 
 function App() {
 
+  const [posts, setPosts] = useState([]);
+
+  const fetchPosts = async () => {
+    const response = await api.get("/")
+    setPosts(response.data.posts)
+  };
+
+  useEffect(() => {
+    fetchPosts()
+  }, []);
+
   return (
-    <div>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/create_post" element={<CreatePost />} />
-        </Routes>
-      </Router>
-    </div>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<LandingPage posts={posts} />}></Route>
+        <Route path="/create_post" element={<CreatePost />} />
+        {posts.map(post => (
+          <Route
+            key={post.id}
+            path={`/posts/${post.id}`}
+            element={<PostPage
+              title={post.title}
+              date={post.pubDate}
+              content={post.content}
+            />}
+          />
+        ))}
+        <Route path="/about" element={<About />}></Route>
+      </Routes>
+    </Router>
   );
 }
 
