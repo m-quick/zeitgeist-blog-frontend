@@ -26,8 +26,14 @@ def get_posts() -> Dict[str, List]:
 
 @app.post("/create_post")
 def new_post(post: Post) -> bool:
+    post_id = len(data) + 1
     data.append(
-        {"title": post.title, "pubDate": str(date.today()), "content": post.content}
+        {
+            "id": post_id,
+            "title": post.title,
+            "pubDate": str(date.today()),
+            "content": post.content,
+        }
     )
     with open(DATA_PATH, "w") as f:
         json.dump(data, f)
