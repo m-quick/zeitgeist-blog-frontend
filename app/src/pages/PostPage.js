@@ -1,5 +1,4 @@
-function Post(props) {
-
+function PostPage(props) {
     return (
         <div>
             <h2>{props.title}</h2>
@@ -9,4 +8,4 @@ function Post(props) {
     );
 }
 
-export default Post;
+export default PostPage;
