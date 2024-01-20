@@ -9,7 +9,7 @@ function Post(props) {
 
     return (
         <div>
-            <div className="container border">
+            <div className="container border rounded">
                 <h2><Link to={`/posts/${props.id}`}>{props.title}</Link></h2>
                 <time>{props.date}</time>
                 <p>{VisibleContent(props.content)}</p>
