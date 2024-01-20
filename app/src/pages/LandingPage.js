@@ -3,7 +3,9 @@ import Post from "../components/Post";
 function LandingPage(props) {
     return (
         <div>
-            <h1>Posts</h1>
+            <div className="container rounded">
+                <h1>Blog posts</h1>
+            </div>
             {props.posts.map((post, index) => (
                 <Post
                     id={post.id}
