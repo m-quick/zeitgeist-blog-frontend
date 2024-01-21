@@ -20,18 +20,20 @@ function CreatePost() {
     };
 
     return (
-        <div>
-            <h1>Create a post</h1>
+        <div class="container">
+            <h1 class="display-6 fs-1 my-3">Create a post</h1>
             {successMessage && <div class="alert alert-success" role="alert">Post added!</div>}
-            <div>
-                <label>Title</label>
-                <input placeholder="Title" onChange={(event) => { setTitle(event.target.value) }}></input>
-            </div>
-            <div>
-                <label>Post</label>
-                <textarea placeholder="Post" onChange={(event) => { setPostText(event.target.value) }}></textarea>
-            </div>
-            <button onClick={addPost}>Submit</button>
+            <form>
+                <div class="form-group my-3">
+                    <label>Title</label>
+                    <input class="form-control my-2" placeholder="Post title" onChange={(event) => { setTitle(event.target.value) }}></input>
+                </div>
+                <div class="form-group my-3">
+                    <label>Post</label>
+                    <textarea class="form-control my-2" placeholder="Post content" onChange={(event) => { setPostText(event.target.value) }}></textarea>
+                </div>
+                <button type="submit" class="btn btn-outline-dark" onClick={addPost}>Submit</button>
+            </form>
         </div >
     );
 }
