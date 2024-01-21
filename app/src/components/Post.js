@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 function Post(props) {
 
     function VisibleContent(content) {
-        const suffix = content.length > 100 ? "..." : ""
-        return content.slice(0, 100) + suffix
+        const suffix = content.length > 250 ? "..." : ""
+        return content.slice(0, 250) + suffix
     }
 
     return (
