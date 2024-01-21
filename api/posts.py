@@ -4,6 +4,7 @@ import json
 from datetime import date
 from typing import Dict, List
 from constants import ORIGINS, DATA_PATH, Post
+import utils
 
 
 app = FastAPI()
@@ -21,7 +22,8 @@ data = json.load(open(DATA_PATH, "r"))
 
 @app.get("/")
 def get_posts() -> Dict[str, List]:
-    return {"posts": data}
+    posts_sorted = utils.sort_posts(data)
+    return {"posts": posts_sorted}
 
 
 @app.post("/create_post")
