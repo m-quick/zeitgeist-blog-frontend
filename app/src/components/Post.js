@@ -10,7 +10,7 @@ function Post(props) {
     return (
         <div>
             <div className="shadow-sm p-3 mb-1 bg-body container border rounded">
-                <h2 class="display-6"><Link class="link-secondary" to={`/posts/${props.id}`}>{props.title}</Link></h2>
+                <h2 class="display-6 fs-4"><Link class="link-secondary" to={`/posts/${props.id}`}>{props.title}</Link></h2>
                 <small class="text-muted">{props.date}</small>
                 <p>{VisibleContent(props.content)}</p>
             </div>
