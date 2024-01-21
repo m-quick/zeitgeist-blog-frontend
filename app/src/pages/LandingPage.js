@@ -4,7 +4,7 @@ function LandingPage(props) {
     return (
         <div>
             <div className="container rounded">
-                <h1>Blog posts</h1>
+                <h1 class="display-3 fw-normal">Blog posts</h1>
             </div>
             {props.posts.map((post, index) => (
                 <Post
