@@ -1,9 +1,9 @@
 function PostPage(props) {
     return (
-        <div>
-            <h2>{props.title}</h2>
-            <time>{props.date}</time>
-            <p>{props.content}</p>
+        <div class="container">
+            <h1 class="display-6 fs-1 my-3">{props.title}</h1>
+            <small class="text-muted">{props.date}</small>
+            <p class="my-3">{props.content}</p>
         </div>
     );
 }
