@@ -187,3 +187,4 @@ test.html
 tests.py
 *.json
 *.lock
+*.ipynb
