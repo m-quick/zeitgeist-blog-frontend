@@ -186,5 +186,4 @@ yarn-error.log*
 test.html
 tests.py
 *.json
-*.lock
 *.ipynb
