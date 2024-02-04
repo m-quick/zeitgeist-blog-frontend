@@ -6,7 +6,7 @@ function Navbar() {
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark justify-content-between">
             <div class="container">
                 <h2>
-                    <Link to="/" class="navbar-brand fs-4 fw-normal">
+                    <Link to="/" class="navbar-brand fs-3 fw-normal">
                         {/* <img src="favicon.png" alt="" /> */}
                         Zeitgeist
                     </Link>
