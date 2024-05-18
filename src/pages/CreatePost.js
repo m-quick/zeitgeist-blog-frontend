@@ -10,7 +10,7 @@ function CreatePost() {
 
     const addPost = async () => {
         try {
-            const response = await api.post("create_post", { "title": title, "content": post_text });
+            const response = await api.post("add_post", { "title": title, "content": post_text });
             if (response.data === true) {
                 setSuccessMessage(true);
             }
