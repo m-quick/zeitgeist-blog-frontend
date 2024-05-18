@@ -2,9 +2,10 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import categories from '../data/categories.json';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import fetchFilteredPosts from '../api/filterPosts';
 
-function Sidebar() {
+function Sidebar({ fetchPosts }) {
 
     const [category, setCategory] = useState("");
     const [startDate, setstartDate] = useState(new Date());
@@ -34,6 +35,14 @@ function Sidebar() {
         }
     }
 
+    const handleFormSubmit = async (e) => {
+        const filteredPosts = await fetchFilteredPosts(2);
+
+        // useEffect(() => {
+        //     fetchPosts(filteredPosts);
+        // }, [fetchPosts]);
+    }
+
     const author_options = [
         { "name": "Either", "value": "either" },
         { "name": "True", "value": "only" },
@@ -44,7 +53,7 @@ function Sidebar() {
         <Container className="rounded my-3 py-2" style={{ "background-color": "#e9ecef" }}>
             <h1 class="display-1 fs-2 fw-normal">Filter posts</h1>
             {dateError && <div class="alert alert-danger" role="alert">End date must be after start date!</div>}
-            <Form>
+            <Form onSubmit={handleFormSubmit}>
                 <Form.Group className="mb-3">
                     <Form.Label>Category</Form.Label>
                     <Form.Select value={category} onChange={(e) => setCategory(e.target.value)}>

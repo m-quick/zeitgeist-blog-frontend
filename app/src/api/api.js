@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-    baseURL: "http://127.0.0.1:8000/"
+    baseURL: "https://zeitgeist-blog-api-tgk3y42gxq-uc.a.run.app"
 });
 
 export default api;
