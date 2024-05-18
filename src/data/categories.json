@@ -1,0 +1,14 @@
+[
+    {
+        "name": "Politics",
+        "code": "politics"
+    },
+    {
+        "name": "Economics",
+        "code": "economics"
+    },
+    {
+        "name": "Sport",
+        "code": "sport"
+    }
+]
