@@ -4,7 +4,7 @@ import CreatePost from './pages/CreatePost.js'
 import PostPage from './pages/PostPage.js'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import api from "./api.js";
+import api from "./api/api.js";
 import LandingPage from "./pages/LandingPage.js"
 import About from "./pages/About.js"
 
@@ -12,9 +12,9 @@ function App() {
 
   const [posts, setPosts] = useState([]);
 
-  const fetchPosts = async () => {
-    const response = await api.get("/")
-    setPosts(response.data.posts)
+  const fetchPosts = async (id = 1) => {
+    const response = await api.get(`/posts?id=${id}`);
+    setPosts(response.data);
   };
 
   useEffect(() => {
@@ -25,7 +25,7 @@ function App() {
     <Router>
       <Navbar />
       <Routes>
-        <Route path="/" element={<LandingPage posts={posts} />}></Route>
+        <Route path="/" element={<LandingPage posts={posts} fetchPosts={fetchPosts} />}></Route>
         <Route path="/create_post" element={<CreatePost />} />
         {posts.map(post => (
           <Route
